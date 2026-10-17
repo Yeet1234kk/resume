@@ -8,11 +8,11 @@ import {
 
 const NAV = [
   { id: 'about', label: 'About' },
-  { id: 'resume', label: 'Resume' },
+  { id: 'resume', label: 'Experience & skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'achievements', label: 'Achievements' },
-  { id: 'cv', label: 'CV' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'cv', label: 'Resume' },
+  { id: 'contact', label: 'Links' },
 ];
 const SECTIONS = ['top', ...NAV.map((n) => n.id)];
 
@@ -113,7 +113,7 @@ function WorkPeek() {
   }, []);
   return (
     <a className="badge badge-atom depth-2" href="#projects">
-      <span className="atom-disc peek">
+      <span className="peek">
         {PEEK.map((img, n) => <img key={img.src} src={img.src} alt="" className={n === i ? 'on' : ''} />)}
       </span>
       <span className="badge-label">See my work</span>
@@ -178,7 +178,7 @@ function SectionHead({ title, sub }: { title: string; sub?: string }) {
 function About() {
   return (
     <section id="about" className="section">
-      <SectionHead title="About me" sub="How I got here" />
+      <SectionHead title="Personal brand story" sub="Who I am and how I got here" />
       <div className="about-grid">
         <div className="card story reveal">
           <p>{story[0]}</p>
@@ -199,8 +199,8 @@ function About() {
   );
 }
 
-function WorkItem({ j, first }: { j: (typeof work)[number]; first: boolean }) {
-  const [open, setOpen] = useState(first);
+function WorkItem({ j }: { j: (typeof work)[number] }) {
+  const [open, setOpen] = useState(true);
   const id = useId();
   const year = (j.dates.match(/\d{4}/) ?? [''])[0];
   return (
@@ -221,12 +221,44 @@ function WorkItem({ j, first }: { j: (typeof work)[number]; first: boolean }) {
 }
 
 function Resume() {
-  const tech = skills.filter((g) => !['Business and marketing', 'Soft skills'].includes(g.group));
-  const soft = skills.filter((g) => ['Business and marketing', 'Soft skills'].includes(g.group));
+  const tech = skills.filter((g) => !['Business analysis and marketing', 'Soft skills'].includes(g.group));
+  const soft = skills.filter((g) => ['Business analysis and marketing', 'Soft skills'].includes(g.group));
   return (
     <section id="resume" className="section">
-      <SectionHead title="Skills & Experiences" sub="Levels are self-assessed: Beginner, Intermediate or Advanced" />
+      <SectionHead title="Education and work history" />
 
+      <div className="two-col">
+        <div className="reveal">
+          <h3 className="h3">Work history</h3>
+          <p className="hint">Tap a role to open or close its details.</p>
+          <ol className="xp" aria-label="Work history">
+            {work.map((j) => <WorkItem key={j.title} j={j} />)}
+          </ol>
+        </div>
+        <div className="reveal">
+          <h3 className="h3">Education</h3>
+          {education.map((e) => (
+            <div className="card edu" key={e.school}>
+              <p className="xp-year">{e.dates}</p>
+              <p className="edu-school">{e.school}</p>
+              <p className="edu-degree">{e.degree}</p>
+              {e.courses.length > 0 && (
+                <More label={`Show relevant courses (${e.courses.length})`} defaultOpen>
+                  <ul className="plain">{e.courses.map((c) => <li key={c}>{c}</li>)}</ul>
+                </More>
+              )}
+              {e.activities.length > 0 && (
+                <More label={`Show clubs and activities (${e.activities.length})`}>
+                  <ul className="plain">{e.activities.map((c) => <li key={c}>{c}</li>)}</ul>
+                </More>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="skills-gap" />
+      <SectionHead title="Skills inventory" sub="Levels are self-assessed: Beginner, Intermediate or Advanced" />
       <h3 className="h3 reveal">Technical skills</h3>
       <div className="skill-groups">
         {tech.map((g, gi) => (
@@ -239,36 +271,6 @@ function Resume() {
             </ul>
           </div>
         ))}
-      </div>
-
-      <div className="two-col">
-        <div className="reveal">
-          <h3 className="h3">Work history</h3>
-          <p className="hint">Tap a role to open or close its details.</p>
-          <ol className="xp" aria-label="Work history">
-            {work.map((j, i) => <WorkItem key={j.title} j={j} first={i === 0} />)}
-          </ol>
-        </div>
-        <div className="reveal">
-          <h3 className="h3">Education</h3>
-          {education.map((e) => (
-            <div className="card edu" key={e.school}>
-              <p className="xp-year">{e.dates}</p>
-              <p className="edu-school">{e.school}</p>
-              <p className="edu-degree">{e.degree}</p>
-              {e.courses.length > 0 && (
-                <More label={`Show relevant courses (${e.courses.length})`}>
-                  <ul className="plain">{e.courses.map((c) => <li key={c}>{c}</li>)}</ul>
-                </More>
-              )}
-              {e.activities.length > 0 && (
-                <More label={`Show clubs and activities (${e.activities.length})`}>
-                  <ul className="plain">{e.activities.map((c) => <li key={c}>{c}</li>)}</ul>
-                </More>
-              )}
-            </div>
-          ))}
-        </div>
       </div>
 
       <div className="two-col">
@@ -321,6 +323,7 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
         <p className="case-meta"><span>{kind}</span><span className="status">{p.status}</span></p>
         <h3>{p.name}</h3>
         <p className="case-what">{p.what}</p>
+        <p className="case-role"><b>My role:</b> {p.role}</p>
         <ul className="chips">{p.tools.map((t) => <li key={t}>{t}</li>)}</ul>
         <div className="case-actions">
           <button className="ghost" aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -331,7 +334,6 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
         <div className="case-details" hidden={!open}>
           {p.features && (<><p className="dk">What it does</p><ul className="plain">{p.features.map((f) => <li key={f}>{f}</li>)}</ul></>)}
           <dl>
-            <div><dt>My role</dt><dd>{p.role}</dd></div>
             {p.challenge && <div><dt>Challenge</dt><dd>{p.challenge}</dd></div>}
             {p.result && <div><dt>Result</dt><dd>{p.result}</dd></div>}
             <div><dt>Evidence</dt><dd>{p.evidence.map((ev) => ev.href ? <a key={ev.label} href={ev.href} target="_blank" rel="noreferrer">{ev.label}</a> : <span key={ev.label}>{ev.label}</span>)}</dd></div>
@@ -352,7 +354,7 @@ function Projects() {
   const shown = groups.flatMap((g) => g.items.map((p) => ({ p, kind: g.key }))).filter((x) => filter === 'All' || x.kind === filter);
   return (
     <section id="projects" className="section">
-      <SectionHead title="Projects" sub="Open any project to see what I did and how it turned out" />
+      <SectionHead title="University and work projects" sub="What each project is, my role, the tools I used and proof it exists" />
       <div className="filters reveal" role="tablist" aria-label="Filter projects">
         {['All', ...groups.map((g) => g.key)].map((f) => (
           <button key={f} role="tab" aria-selected={filter === f} className={filter === f ? 'on' : ''} onClick={() => setFilter(f)}>{f}</button>
@@ -368,7 +370,7 @@ function Projects() {
 function Achievements() {
   return (
     <section id="achievements" className="section">
-      <SectionHead title="Achievements" sub="Competitions, workshops and certificates" />
+      <SectionHead title="Competitions, workshops and certificates" />
       <h3 className="h3 reveal">Competitions</h3>
       <div className="comp-grid">
         {competitions.map((c) => (

@@ -28,11 +28,12 @@ export const brand = {
 
 // Told in order, so each part leads into the next. The first paragraph is always shown.
 export const story = [
-  'I started selling sneakers in 2021, while I was still in school. I bought worn pairs, cleaned them up until they looked new, and sold them on Facebook and LINE. More than 300 sales later I’m still at it, only now it’s watches.',
+  'I’m Atom, a first-year ICT student at Mahidol University, and I build websites and tools for small businesses. My strength is that I’ve run a small business myself, so I understand the owner’s problem before I write any code.',
+  'It started in 2021, while I was still in school. I bought worn sneakers, cleaned them up until they looked new, and sold them on Facebook and LINE. More than 300 sales later I’m still at it, only now it’s watches.',
   'Running that shop alone taught me what small business owners worry about: what sold, what it cost, and what’s left at the end of the month. When a restoration didn’t come out looking new, I told the buyer I needed more time and did it again, even when it ate my profit. When sneaker demand dropped, I saw it coming and moved to watches.',
   'Then I taught myself HTML, CSS and JavaScript from YouTube and real projects. A few months in, someone paid me to build their website. Since then I’ve built 3 to 5 client sites, including a 14-page English and Thai site for King Nylon, a rope and fishing net maker.',
   'My family’s restaurant, Fantuan, is where both sides meet. Orders come in through the POS, LINE MAN and Grab, and nobody sees them in one place. So I’m building a tool that sends my brother one short LINE message with the day’s sales.',
-  'Today I’m a first-year ICT student at Mahidol University, looking for an internship at a tech company or startup. One day I’d like to intern in Germany, because I love cars and the car industry there.',
+  'Now I’m looking for an internship at a tech company or startup, where I can learn how bigger teams build software. One day I’d like to intern in Germany, because I love cars and the car industry there.',
 ];
 
 export const education = [
@@ -163,12 +164,15 @@ export type Skill = { name: string; level?: string | null };
 export const skills: { group: string; items: Skill[] }[] = [
   { group: 'Web development', items: [
     { name: 'HTML', level: 'Intermediate' }, { name: 'CSS', level: 'Intermediate' },
-    { name: 'JavaScript', level: 'Intermediate' }, { name: 'Backend and databases', level: 'Intermediate' },
+    { name: 'Backend development', level: 'Intermediate' },
     { name: 'Debugging and troubleshooting', level: 'Intermediate' },
   ]},
-  { group: 'Programming and data', items: [
-    { name: 'Python', level: 'Intermediate' }, { name: 'SQL and MySQL', level: 'Intermediate' },
-    { name: 'C', level: 'Intermediate' }, { name: 'Arduino and C++', level: 'Intermediate' },
+  { group: 'Programming languages', items: [
+    { name: 'Python', level: 'Intermediate' }, { name: 'C', level: 'Intermediate' },
+    { name: 'Arduino and C++', level: 'Intermediate' }, { name: 'JavaScript', level: 'Intermediate' },
+  ]},
+  { group: 'Database tools', items: [
+    { name: 'SQL', level: 'Intermediate' }, { name: 'MySQL', level: 'Intermediate' },
   ]},
   { group: 'Design and prototyping', items: [
     { name: 'Canva', level: 'Advanced' }, { name: 'Figma', level: 'Intermediate' },
@@ -178,7 +182,7 @@ export const skills: { group: string; items: Skill[] }[] = [
   { group: 'Tools and platforms', items: [
     { name: 'Vercel', level: 'Advanced' }, { name: 'AI tools', level: 'Advanced' }, { name: 'REST APIs', level: 'Intermediate' },
   ]},
-  { group: 'Business and marketing', items: [
+  { group: 'Business analysis and marketing', items: [
     { name: 'Negotiation' }, { name: 'Money and stock management' }, { name: 'Market research' },
     { name: 'Digital marketing' }, { name: 'Product photography' }, { name: 'Sneaker and watch restoration' },
   ]},
