@@ -11,7 +11,7 @@ export const profile = {
   name: 'Phasin Likitphatham',
   nickname: 'Atom',
   headline: 'First-year ICT student at Mahidol University | Websites and tools for small businesses | HTML, CSS, JavaScript',
-  seeking: 'Open to internships at tech companies and startups',
+  seeking: 'Looking for an internship at a tech company or startup',
   email: 'atom.phasin@gmail.com' as string | null,
   phone: '+66 93 791 7443' as string | null,
   linkedin: 'https://www.linkedin.com/in/phasin-likitphatham-380484372/' as string | null,
@@ -21,17 +21,18 @@ export const profile = {
 
 // Lesson 7: value, audience, promise
 export const brand = {
-  audience: 'Small business owners, like restaurants and retail shops, with no in-house tech team',
-  persona: 'A builder who works with paying clients, not just class projects',
-  promise: 'I find gaps in small businesses and build practical websites and tools to fill them',
+  audience: 'Restaurants and small shops with nobody to look after the tech side',
+  persona: 'Someone who builds for paying clients, not just for class',
+  promise: 'I find the thing slowing a small business down, then build the website or tool that fixes it',
 };
 
-// Present tense, active voice (Lesson 7). First paragraph = my submitted brand story.
+// Told in order, so each part leads into the next. The first paragraph is always shown.
 export const story = [
-  'I’m Atom, and I build websites and tools that solve real problems for small businesses. Running my family’s food shop showed me how hard it is to track sales across the POS, LINE MAN and Grab, so I’m building a system that sends the owner one clear daily report on LINE. From client websites to tools for my family’s shop, I start by understanding the business, then deliver something the owner actually uses every day.',
-  'I’m a first-year ICT student at Mahidol University. I taught myself HTML, CSS and JavaScript through YouTube and real projects, and I had my first paid web client within one to three months.',
-  'Business taught me the rest. Since 2021 I’ve run my own resale business, first sneakers and now watches, with average monthly revenue in the five figures (THB). When a restoration order didn’t look brand new, I told the customer I needed more time and redid it, even when that cost me time or profit. When sneaker demand cooled, I tracked the trend and moved the business to watches.',
-  'I’m looking for an internship at a tech company or startup during university, and I’m working toward an internship in Germany, drawn by my love of cars and the automotive industry.',
+  'I started selling sneakers in 2021, while I was still in school. I bought worn pairs, cleaned them up until they looked new, and sold them on Facebook and LINE. More than 300 sales later I’m still at it, only now it’s watches.',
+  'Running that shop alone taught me what small business owners worry about: what sold, what it cost, and what’s left at the end of the month. When a restoration didn’t come out looking new, I told the buyer I needed more time and did it again, even when it ate my profit. When sneaker demand dropped, I saw it coming and moved to watches.',
+  'Then I taught myself HTML, CSS and JavaScript from YouTube and real projects. A few months in, someone paid me to build their website. Since then I’ve built 3 to 5 client sites, including a 14-page English and Thai site for King Nylon, a rope and fishing net maker.',
+  'My family’s restaurant, Fantuan, is where both sides meet. Orders come in through the POS, LINE MAN and Grab, and nobody sees them in one place. So I’m building a tool that sends my brother one short LINE message with the day’s sales.',
+  'Today I’m a first-year ICT student at Mahidol University, looking for an internship at a tech company or startup. One day I’d like to intern in Germany, because I love cars and the car industry there.',
 ];
 
 export const education = [
@@ -52,10 +53,10 @@ export const education = [
   },
   {
     school: 'Potisarnpittayakorn School',
-    degree: 'Intensive English Program, Computer Science track (M.4–6); English Program, Science Robotics track (M.1–3)',
+    degree: 'Intensive English Program, Computer Science track (M.4 to 6); English Program, Science Robotics track (M.1 to 3)',
     dates: 'Graduated 2025',
     courses: [] as string[],
-    activities: ['Computer Science Club: hackathons and competitions', 'Boxing Club', 'Senior Student Ambassador, program open house events', 'Teaching Assistant, Muay Thai cultural exchange for Chinese exchange students', 'Good Citizen Award 2025: sports day Treasurer and Acting Vice President'],
+    activities: ['Computer Science Club: hackathons and competitions', 'Boxing Club', 'Senior Student Ambassador at the program’s open house events', 'Teaching assistant for a Muay Thai cultural exchange with Chinese exchange students', 'Good Citizen Award 2025, as sports day Treasurer and Acting Vice President'],
   },
 ];
 
@@ -65,8 +66,8 @@ export const work = [
     org: 'Fantuan, family restaurant',
     dates: 'Aug 2026 to present',
     points: [
-      'Design a reporting tool that combines sales from the Buzzebees POS, LINE MAN and Grab into one daily LINE report for the owner',
-      'Research how to access each platform’s data within its terms of service and Thailand’s data protection law (PDPA)',
+      'Designing a tool that pulls sales from the Buzzebees POS, LINE MAN and Grab into one daily LINE report for the owner',
+      'Working out how to get each platform’s data without breaking its terms of service or Thailand’s data protection law (PDPA)',
     ],
   },
   {
@@ -74,9 +75,9 @@ export const work = [
     org: 'Watch business',
     dates: 'Mar 2026 to present',
     points: [
-      'Write watch listings, shoot and edit product photos, and post content on Instagram, Facebook and TikTok',
-      'Answer customer questions about products and orders',
-      'Built Watch Poster, a tool that posts one listing to several Facebook groups in a single run',
+      'Write the watch listings, shoot and edit the photos, and post them on Instagram, Facebook and TikTok',
+      'Answer customers’ questions about watches and orders',
+      'Built Watch Poster so one listing goes out to many Facebook groups in a single run',
     ],
   },
   {
@@ -84,10 +85,10 @@ export const work = [
     org: 'Self-employed',
     dates: 'Mar 2026 to present',
     points: [
-      'Run client projects alone, from the first meeting to launch and maintenance',
-      'Turn unclear client ideas into layouts with structured questions and Figma, Canva and v0 mockups before building',
-      'Deliver builds to each client’s specification and revise them through feedback rounds',
-      'Built 3–5 client websites, including a 14-page bilingual site for King Nylon, a Thai rope and fishing net manufacturer',
+      'Handle each client project on my own, from the first meeting through launch and upkeep',
+      'Ask clients the right questions, then turn rough ideas into Figma, Canva and v0 mockups before I write any code',
+      'Build to each client’s brief and keep revising until they’re happy with it',
+      'Built 3 to 5 client websites so far, including a 14-page English and Thai site for King Nylon, a Thai rope and fishing net maker',
     ],
   },
   {
@@ -95,11 +96,11 @@ export const work = [
     org: 'Resale business: sneakers (2021 to 2025), watches (2025 to present)',
     dates: '2021 to present',
     points: [
-      'Run the business alone, handling sourcing, restoration, pricing and marketing',
-      'Sold 300+ items through Facebook and LINE, with average monthly revenue in the five figures (THB)',
-      'Restore used sneakers and watches to raise their resale value, and redo any restoration that doesn’t look brand new before delivery',
-      'Negotiate purchase and sale prices with suppliers and buyers, and review stock costs and profit each month to decide what to invest in next',
-      'Pivoted from sneakers to watches in 2025 after tracking a drop in sneaker demand',
+      'Run the whole business alone: buying, restoring, pricing and marketing',
+      'Sold more than 300 items through Facebook and LINE, averaging five figures (THB) in monthly revenue',
+      'Restore used sneakers and watches so they sell for more, and redo any piece that doesn’t look new before it ships',
+      'Haggle on price with sellers and buyers, and check costs and profit every month to decide what to buy next',
+      'Switched from sneakers to watches in 2025 when sneaker demand dropped',
     ],
   },
 ];
@@ -122,37 +123,38 @@ export const projects: Project[] = [
   {
     name: 'King Nylon website',
     status: 'Live draft',
-    what: 'A 14-page bilingual (English and Thai) website for King Nylon, a Thai manufacturer of nylon, PE, PP and polyester rope, twine and fishing nets for commercial fisheries, aquaculture and construction.',
+    what: 'King Nylon makes rope, twine and fishing nets for fishing boats, fish farms and building sites. I built them a 14-page website in English and Thai.',
     features: [
       'Five sections: Why us, Products (rope, fishing nets, other netting), Company (technology, quality control, gallery), Customers (testimonials, FAQ) and Contact',
-      'English and Thai language switch in the header',
-      'Quote request form, linked from the header and the home page',
-      'Home page specification table: materials, 3-, 4- and 8-strand and braided construction, knotted and knotless netting, UV-stabilised finish, OEM supply',
-      'Search and sharing setup: canonical URL, Open Graph and Twitter card previews, Thai locale tag and indexing rules',
-      'Skip-to-content link and a mobile menu',
+      'An English and Thai switch in the header',
+      'A quote request form, linked from the header and the home page',
+      'A spec table on the home page: materials, 3-, 4- and 8-strand and braided rope, knotted and knotless netting, UV-stabilised finish, OEM supply',
+      'Set up for Google and for link previews on social media, with a Thai language tag',
+      'A skip-to-content link and a mobile menu',
     ],
-    role: 'Solo developer: design, page structure, coding and deployment',
+    role: 'Everything, on my own: design, page structure, code and launch',
     tools: ['HTML', 'CSS', 'JavaScript', 'SEO metadata', 'Vercel'],
-    challenge: 'The client’s company figures (years in business, export markets, annual output) and full product data aren’t ready yet, so those fields hold placeholders that the real data will replace without layout changes.',
-    result: 'A live preview on Vercel for client review, already set up for its planned domain, kingnylon.com.',
+    challenge: 'The client hasn’t sent their company figures or full product data yet. I left placeholders that the real numbers can drop into without changing the layout.',
+    result: 'The preview is live on Vercel for the client to review, already set up for their planned domain, kingnylon.com.',
     evidence: [
       { label: 'Live site: king-nylon.vercel.app', href: 'https://king-nylon.vercel.app' },
     ],
+    images: [{ src: 'king-nylon.jpg', alt: 'King Nylon home page: “Rope and fishing nets for boats, fish farms, and building sites”' }],
   },
   {
     name: 'Fantuan sales report app',
     status: 'Planning and research',
-    what: 'A reporting tool that sends my brother one daily LINE message covering the family restaurant’s sales from all three channels.',
+    what: 'My family’s restaurant sells through three channels, and nobody sees the totals in one place. This tool will send my brother one LINE message a day with all of it.',
     features: [
-      'Sources: Buzzebees POS, LINE MAN and Grab',
-      'Report contents: sales per channel, best- and worst-selling items, the most profitable platform after commission fees, and ingredient stock burn rate',
-      'Delivery: a LINE message through the LINE Messaging API',
+      'Pulls from the Buzzebees POS, LINE MAN and Grab',
+      'Shows sales per channel, best and worst sellers, which platform makes the most after fees, and how fast ingredients run out',
+      'Arrives as a LINE message through the LINE Messaging API',
     ],
-    role: 'Solo developer: requirements, research and system design',
+    role: 'Everything, on my own: requirements, research and system design',
     tools: ['REST APIs', 'Buzzebees POS API', 'LINE Messaging API', 'PDPA'],
-    challenge: 'LINE MAN and Grab are closed platforms, so I research which merchant data I can access without breaking their terms of service or the PDPA.',
-    result: 'Confirmed that the Buzzebees POS offers a REST API with key-based access, and mapped the full data flow in the diagram below.',
-    evidence: [{ label: 'System design diagram (below)', href: null }],
+    challenge: 'LINE MAN and Grab don’t open their data to just anyone, so I’m researching what a merchant can access without breaking their terms or the PDPA.',
+    result: 'I confirmed the Buzzebees POS has a REST API with key-based access, and mapped how the data will flow (see the diagram).',
+    evidence: [{ label: 'System design diagram (above)', href: null }],
     diagram: true,
   },
 ];
@@ -199,37 +201,37 @@ export const schoolProjects: Project[] = [
   {
     name: 'AirSentinel',
     status: 'Senior year project, 2025',
-    what: 'An autonomous robot that navigates a mapped building without collisions, measures air quality in each labeled zone (for example, “Building 1, Main Hallway”) and sends the results to a user interface.',
+    what: 'A robot that drives itself around a building without bumping into anything, checks the air quality in each named area (like “Building 1, Main Hallway”) and sends the readings to a screen.',
     features: [
-      'Maps a building and stores each area as a named zone',
-      'Roams on its own and avoids obstacles',
-      'Collects air-quality readings per zone and shows them in the UI by area name',
+      'Maps the building and saves each area as a named zone',
+      'Drives on its own and steers around obstacles',
+      'Reads the air quality in each zone and shows it on screen by area name',
     ],
-    role: 'Project lead in a team of 4+: hardware, sensors and the user interface',
+    role: 'Led a team of 4+, and worked on the hardware, sensors and user interface',
     tools: ['Arduino', 'C++', 'Air-quality sensors', 'Robot platform'],
-    evidence: [{ label: 'Photos of the prototype, the physical robot and the zone map (below)', href: null }],
+    evidence: [{ label: 'Photos of the prototype, the robot and the zone map (above)', href: null }],
     images: [{ src: airsentinelImg, alt: 'AirSentinel prototype render, the physical robot, and a floor plan showing the robot moving between labeled rooms' }],
   },
   {
     name: 'Breaking Bonds',
     status: 'Competition entry, 2025',
-    what: 'A digital board game where players act as investors in a collapsed mine, buying and selling chemical elements whose prices shift with random world events such as pandemics.',
-    role: 'Concept lead in a team of 3, with a teacher advisor',
+    what: 'A digital board game where you play an investor in a collapsed mine. You buy and sell chemical elements, and their prices jump around with random world events like pandemics.',
+    role: 'Came up with the game concept, in a team of 3 with a teacher advisor',
     tools: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'VS Code'],
-    result: 'Placed 8th of about 40 teams at the MUICT-AST Tech Competition and qualified past the first round.',
-    evidence: [{ label: 'Game screenshots (below)', href: null }],
+    result: 'We placed 8th of about 40 teams at the MUICT-AST Tech Competition and made it past the first round.',
+    evidence: [{ label: 'Game screenshots (above)', href: null }],
     images: [{ src: breakingBondsImg, alt: 'Breaking Bonds title screen, periodic-table trading board and player setup screen' }],
   },
 ];
 
 export const competitions: { name: string; year: string; result: string; detail: string; image?: { src: string; alt: string } }[] = [
-  { name: 'MUICT-AST Tech Competition (Mahidol University ICT)', year: '2025', result: '8th of about 40 teams, qualified past the first round', detail: 'Breaking Bonds digital board game, team of 3; I led the game concept.' },
-  { name: 'SPU AI Prompt Mini Hackathon (Sripatum University)', year: '2025', result: 'Participant', detail: 'Timed AI and coding challenge.' },
-  { name: 'Web Development Competition (university-hosted)', year: '2024', result: 'Honorable Mention, 5th of 26', detail: 'Built a health and nutrition website to given specifications under time limits, team of 2.', image: { src: webdevAwardImg, alt: 'Receiving the Honorable Mention award at the web development competition' } },
+  { name: 'MUICT-AST Tech Competition (Mahidol University ICT)', year: '2025', result: '8th of about 40 teams, through to the second round', detail: 'Our team of 3 entered Breaking Bonds, a digital board game. The game concept was mine.' },
+  { name: 'SPU AI Prompt Mini Hackathon (Sripatum University)', year: '2025', result: 'Participant', detail: 'A timed challenge using AI and code.' },
+  { name: 'Web Development Competition (university-hosted)', year: '2024', result: 'Honorable Mention, 5th of 26', detail: 'With one teammate, I built a health and nutrition website to a set brief against the clock.', image: { src: webdevAwardImg, alt: 'Receiving the Honorable Mention award at the web development competition' } },
 ];
 
 export const workshops = [
-  { name: 'TP-Link Enterprise Training Program', org: 'TP-Link Enterprise and Potisarnpittayakorn School', date: '17 to 21 Mar 2025', detail: 'Five days on networking, CCTV, access point setup, routing and help desk support, including client meetings matching security products to factory needs.' },
+  { name: 'TP-Link Enterprise Training Program', org: 'TP-Link Enterprise and Potisarnpittayakorn School', date: '17 to 21 Mar 2025', detail: 'Five days of networking, CCTV, access point setup, routing and help desk work. We also sat in on client meetings, matching security products to what each factory needed.' },
 ];
 
 export const certificates = [
@@ -242,49 +244,52 @@ export const personalProjects: Project[] = [
   {
     name: 'CarPlay Dashboard',
     status: 'Live',
-    what: 'A phone web app that works like a car dashboard in the style of Apple CarPlay, combining navigation, music and weather on one screen.',
+    what: 'I wanted Apple CarPlay on my phone, so I built my own: maps, music and weather on one screen, made for the car.',
     features: [
-      'Saved places, including home and Mahidol University, plus nearby search for gas, food, parking, hospitals and shops',
-      'Route preview with distance and drive time, live speed in km/h, and one-tap navigation',
-      'YouTube Music player with songs, playlists, an up-next queue and lyrics',
+      'Saved places like home and Mahidol University, plus nearby gas, food, parking, hospitals and shops',
+      'Route preview with distance and drive time, your live speed in km/h, and one tap to start navigating',
+      'A YouTube Music player with songs, playlists, an up-next queue and lyrics',
       'Weather with the current, high and low temperature',
-      'Voice search: say a place name to find it',
-      'Opens full screen when added to the phone’s home screen',
+      'Voice search: say a place and it finds it',
+      'Opens full screen once you add it to your home screen',
     ],
-    role: 'Idea, feature planning, testing and deployment',
+    role: 'The idea, planning the features, testing and launch',
     tools: ['HTML', 'CSS', 'JavaScript', 'Geolocation', 'Vercel'],
     evidence: [{ label: 'Live app: car-play-five.vercel.app', href: 'https://car-play-five.vercel.app' }],
+    images: [{ src: 'carplay.jpg', alt: 'CarPlay Dashboard with shortcuts, map area, clock, weather and a YouTube Music player' }],
   },
   {
     name: 'Finance Tracker',
     status: 'In development',
-    what: 'A money tracker for logging income and expenses, built as my own replacement for tracker apps that charge a yearly subscription.',
+    what: 'I didn’t want to pay a yearly subscription just to track my money, so I’m building my own app for income and spending.',
     features: [
-      'Income and expense categories',
-      'Monthly summary with charts',
+      'Categories for income and spending',
+      'A monthly summary with charts',
       'Budgets and saving goals',
-      'Edit, delete and export entries',
+      'Edit, delete and export any entry',
     ],
-    role: 'Idea, feature planning, testing and deployment',
+    role: 'The idea, planning the features, testing and launch',
     tools: ['HTML', 'CSS', 'JavaScript', 'Local storage', 'Vercel'],
-    challenge: 'Data is stored locally on the device for now.',
-    result: 'A working tracker I use myself. My next step is moving the data into a database, which this project helps me learn.',
+    challenge: 'For now the data only lives on the device.',
+    result: 'It works and I use it myself. Next I’m moving the data into a database, which is a big part of why I’m building it.',
     evidence: [{ label: 'Live app: finance-app-rouge-phi.vercel.app', href: 'https://finance-app-rouge-phi.vercel.app' }],
+    images: [{ src: 'finance-tracker.jpg', alt: 'Finance Tracker home screen showing total spent and an Add Transaction button' }],
   },
   {
     name: 'Watch Poster',
     status: 'Live',
-    what: 'A Thai-language web app for the watch business that posts one listing to every saved Facebook group in a single run. It is designed for groups where the business is allowed to post.',
+    what: 'Posting each watch to every Facebook group by hand took ages. This Thai-language app posts one listing to all the saved groups in one go (only groups where the business is allowed to post).',
     features: [
-      'Caption of up to 2,000 characters and up to 15 photos (JPG, PNG or HEIC) per listing',
-      'Two comment images set once and added under every post: an Open Chat QR code and a LINE QR code',
-      'Group list managed in the app, with a name, Facebook link and emoji icon for each group',
-      'Live progress per group, with start, stop and clear controls',
-      'Telegram notification when every group is done',
-      'Posting runs through n8n workflows and Apify',
+      'A caption of up to 2,000 characters and up to 15 photos (JPG, PNG or HEIC) per listing',
+      'Two images you set once, added as comments under every post: an Open Chat QR code and a LINE QR code',
+      'A group list you manage in the app, with a name, Facebook link and emoji for each group',
+      'Live progress for each group, with start, stop and clear buttons',
+      'A Telegram message when every group is done',
+      'Posts go out through n8n workflows and Apify',
     ],
-    role: 'Idea, feature planning, testing and deployment',
+    role: 'The idea, planning the features, testing and launch',
     tools: ['HTML', 'CSS', 'JavaScript', 'n8n', 'Apify', 'Telegram', 'Vercel'],
     evidence: [{ label: 'Live app: watch-autoposter-ui.vercel.app', href: 'https://watch-autoposter-ui.vercel.app' }],
+    images: [{ src: 'watch-poster.jpg', alt: 'Watch Poster screen with a Thai caption box and photo upload area' }],
   },
 ];

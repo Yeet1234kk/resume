@@ -1,7 +1,6 @@
 import type React from 'react';
 import { useEffect, useId, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import { Mail, Phone, Menu, X, Download, ArrowUpRight, Code2, BarChart3, ChevronDown } from 'lucide-react';
-import Atom3D from './Atom3D';
 import {
   profile, brand, story, education, work, projects, schoolProjects, personalProjects,
   competitions, workshops, certificates, skills, languages, resumePreviewImg, type Project,
@@ -102,6 +101,26 @@ function Diagram() {
   );
 }
 
+// Screenshots of the live projects, shown one after another in the hero disc.
+const PEEK = [...projects, ...personalProjects].flatMap((p) => p.images?.slice(0, 1) ?? []);
+
+function WorkPeek() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const t = setInterval(() => setI((n) => (n + 1) % PEEK.length), 2800);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <a className="badge badge-atom depth-2" href="#projects">
+      <span className="atom-disc peek">
+        {PEEK.map((img, n) => <img key={img.src} src={img.src} alt="" className={n === i ? 'on' : ''} />)}
+      </span>
+      <span className="badge-label">See my work</span>
+    </a>
+  );
+}
+
 function Hero() {
   const ref = useRef<HTMLElement>(null);
   const onMove = (e: RPointerEvent<HTMLElement>) => {
@@ -136,10 +155,7 @@ function Hero() {
           <span className="badge-icon pink"><Code2 size={26} strokeWidth={2.4} aria-hidden="true" /></span>
           <span className="badge-label">Web development</span>
         </div>
-        <div className="badge badge-atom depth-2">
-          <div className="atom-disc"><Atom3D /></div>
-          <span className="badge-label">Drag to spin</span>
-        </div>
+        <WorkPeek />
         <div className="badge badge-biz depth-3">
           <span className="badge-icon white"><BarChart3 size={22} strokeWidth={2.4} aria-hidden="true" /></span>
           <span className="badge-label">Business tools</span>
@@ -162,7 +178,7 @@ function SectionHead({ title, sub }: { title: string; sub?: string }) {
 function About() {
   return (
     <section id="about" className="section">
-      <SectionHead title="About me" sub="My personal brand story" />
+      <SectionHead title="About me" sub="How I got here" />
       <div className="about-grid">
         <div className="card story reveal">
           <p>{story[0]}</p>
@@ -279,7 +295,14 @@ function Resume() {
 
 function ProjectCard({ p, kind }: { p: Project; kind: string }) {
   const [open, setOpen] = useState(false);
+  const [seen, setSeen] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  // The card re-renders its className, so it tracks its own reveal instead of relying on useReveal.
+  useEffect(() => {
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setSeen(true); io.disconnect(); } }, { rootMargin: '0px 0px -10% 0px' });
+    io.observe(ref.current!);
+    return () => io.disconnect();
+  }, []);
   const tilt = (e: RPointerEvent<HTMLElement>) => {
     if (e.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const r = ref.current!.getBoundingClientRect();
@@ -290,7 +313,7 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
   const live = p.evidence.find((e) => e.href);
   const img = p.images?.[0];
   return (
-    <article className={`case card reveal${open ? ' open' : ''}`} ref={ref} onPointerMove={tilt} onPointerLeave={reset}>
+    <article className={`case card reveal${seen ? ' in' : ''}${open ? ' open' : ''}`} ref={ref} onPointerMove={tilt} onPointerLeave={reset}>
       <div className={`case-media${img ? '' : ' no-img'}`}>
         {img ? <img src={img.src} alt={img.alt} loading="lazy" /> : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}</span>}
       </div>
@@ -329,7 +352,7 @@ function Projects() {
   const shown = groups.flatMap((g) => g.items.map((p) => ({ p, kind: g.key }))).filter((x) => filter === 'All' || x.kind === filter);
   return (
     <section id="projects" className="section">
-      <SectionHead title="Projects" sub="Tap a project for its role, tools, challenge, result and evidence" />
+      <SectionHead title="Projects" sub="Open any project to see what I did and how it turned out" />
       <div className="filters reveal" role="tablist" aria-label="Filter projects">
         {['All', ...groups.map((g) => g.key)].map((f) => (
           <button key={f} role="tab" aria-selected={filter === f} className={filter === f ? 'on' : ''} onClick={() => setFilter(f)}>{f}</button>
