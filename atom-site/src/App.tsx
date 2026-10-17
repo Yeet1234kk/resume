@@ -292,7 +292,7 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
   return (
     <article className={`case card reveal${open ? ' open' : ''}`} ref={ref} onPointerMove={tilt} onPointerLeave={reset}>
       <div className={`case-media${img ? '' : ' no-img'}`}>
-        {img ? <img src={img.src} alt={img.alt} loading="lazy" /> : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 3)}</span>}
+        {img ? <img src={img.src} alt={img.alt} loading="lazy" /> : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}</span>}
       </div>
       <div className="case-body">
         <p className="case-meta"><span>{kind}</span><span className="status">{p.status}</span></p>
