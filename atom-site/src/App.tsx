@@ -434,7 +434,7 @@ function Contact() {
     profile.linkedin && { label: 'LinkedIn', href: profile.linkedin },
     profile.github && { label: 'GitHub', href: profile.github },
     profile.phone && { label: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}` },
-    { label: 'King Nylon (live project)', href: 'https://king-nylon.vercel.app' },
+    profile.email && { label: profile.email, href: `mailto:${profile.email}` },
   ].filter(Boolean) as { label: string; href: string }[];
   return (
     <section id="contact" className="section contact">
@@ -444,7 +444,7 @@ function Contact() {
         {profile.email && <a className="email" href={`mailto:${profile.email}`}><Mail size={22} /> {profile.email}</a>}
         <p className="h3 links-label">Important links</p>
         <ul className="pill-links" aria-label="Important links">
-          {links.map((l) => <li key={l.label}><a href={l.href} target="_blank" rel="noreferrer">{l.label} <ArrowUpRight size={14} /></a></li>)}
+          {links.map((l) => <li key={l.label}><a href={l.href} {...(l.href.startsWith('http') && { target: '_blank', rel: 'noreferrer' })}>{l.label} <ArrowUpRight size={14} /></a></li>)}
         </ul>
       </div>
     </section>

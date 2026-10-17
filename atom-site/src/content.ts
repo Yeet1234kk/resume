@@ -15,7 +15,7 @@ export const profile = {
   email: 'atom.phasin@gmail.com' as string | null,
   phone: '+66 93 791 7443' as string | null,
   linkedin: 'https://www.linkedin.com/in/phasin-likitphatham-380484372/' as string | null,
-  github: 'https://github.com/yeet1234k' as string | null,
+  github: 'https://github.com/Yeet1234kk' as string | null,
   resume: 'resume.pdf' as string | null, // file lives in /public
 };
 
