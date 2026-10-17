@@ -17,11 +17,6 @@ const NAV = [
 ];
 const SECTIONS = ['top', ...NAV.map((n) => n.id)];
 
-const MONO: Record<string, string> = {
-  HTML: 'HTML', CSS: 'CSS', JavaScript: 'JS', 'Backend and databases': 'API', 'Debugging and troubleshooting': 'DBG',
-  Python: 'Py', 'SQL and MySQL': 'SQL', C: 'C', 'Arduino and C++': 'C++', Canva: 'Ca', Figma: 'Fi', v0: 'v0',
-  Wireframing: 'WF', 'Blender 3D': '3D', Vercel: '▲', 'AI tools': 'AI', 'REST APIs': 'REST',
-};
 const TINTS = ['tint-blue', 'tint-peach', 'tint-lilac', 'tint-mint'];
 
 function useActiveSection() {
@@ -297,7 +292,7 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
   return (
     <article className={`case card reveal${open ? ' open' : ''}`} ref={ref} onPointerMove={tilt} onPointerLeave={reset}>
       <div className={`case-media${img ? '' : ' no-img'}`}>
-        {img ? <img src={img.src} alt={img.alt} loading="lazy" /> : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}</span>}
+        {img ? <img src={img.src} alt={img.alt} loading="lazy" /> : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 3)}</span>}
       </div>
       <div className="case-body">
         <p className="case-meta"><span>{kind}</span><span className="status">{p.status}</span></p>
