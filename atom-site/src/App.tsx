@@ -1,6 +1,6 @@
 import type React from 'react';
 import { useEffect, useId, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
-import { Mail, Phone, Menu, X, Download, ArrowUpRight, Code2, BarChart3, ChevronDown } from 'lucide-react';
+import { Mail, Phone, Menu, X, Download, ArrowUpRight, Code2, BarChart3, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   profile, brand, story, education, work, projects, schoolProjects, personalProjects,
   competitions, workshops, certificates, skills, languages, resumePreviewImg, type Project,
@@ -301,11 +301,26 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
   };
   const reset = () => { ref.current?.style.setProperty('--rx', '0deg'); ref.current?.style.setProperty('--ry', '0deg'); };
   const live = p.evidence.find((e) => e.href);
-  const img = p.images?.[0];
+  const imgs = p.images ?? [];
+  const img = imgs[0];
+  // Full-size screenshot viewer; null means closed.
+  const [shown, setShown] = useState<number | null>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const d = dialog.current;
+    if (!d) return;
+    if (shown !== null && !d.open) d.showModal();
+    if (shown === null && d.open) d.close();
+  }, [shown]);
+  const step = (by: number) => setShown((n) => (n === null ? n : (n + by + imgs.length) % imgs.length));
   return (
     <article className={`case card reveal${seen ? ' in' : ''}${open ? ' open' : ''}`} ref={ref} onPointerMove={tilt} onPointerLeave={reset}>
-      <div className={`case-media${img ? '' : ' no-img'}`}>
-        {img ? <img src={img.src} alt={img.alt} loading="lazy" /> : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}</span>}
+      <div className={`case-media${img ? '' : ' no-img'}${p.phone ? ' phone' : ''}`}>
+        {img ? (
+          <button className="media-open" onClick={() => setShown(0)} aria-label={`View ${p.name} screenshots`}>
+            {(p.phone ? imgs.slice(0, 3) : [img]).map((im) => <img key={im.src} src={im.src} alt={im.alt} loading="lazy" />)}
+          </button>
+        ) : p.diagram ? <Diagram /> : <span className="case-mark" aria-hidden="true">{p.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}</span>}
       </div>
       <div className="case-body">
         <p className="case-meta"><span>{kind}</span><span className="status">{p.status}</span></p>
@@ -320,6 +335,19 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
           {live && <a className="ghost link" href={live.href!} target="_blank" rel="noreferrer">Live site <ArrowUpRight size={16} /></a>}
         </div>
         <div className="case-details" hidden={!open}>
+          {(live || imgs.length > 1) && (
+            <div className="case-links">
+              {live && <a className="btn small" href={live.href!} target="_blank" rel="noreferrer">Visit website <ArrowUpRight size={16} aria-hidden="true" /></a>}
+              {imgs.length > 1 && <button className="ghost" onClick={() => setShown(0)}>View all {imgs.length} screenshots</button>}
+            </div>
+          )}
+          {imgs.length > 1 && (
+            <ul className={`shots${p.phone ? ' phone' : ''}`} aria-label={`${p.name} screenshots`}>
+              {imgs.map((im, i) => (
+                <li key={im.src}><button onClick={() => setShown(i)} aria-label={`Open screenshot ${i + 1}: ${im.alt}`}><img src={im.src} alt="" loading="lazy" /></button></li>
+              ))}
+            </ul>
+          )}
           {p.features && (<><p className="dk">What it does</p><ul className="plain">{p.features.map((f) => <li key={f}>{f}</li>)}</ul></>)}
           <dl>
             {p.challenge && <div><dt>Challenge</dt><dd>{p.challenge}</dd></div>}
@@ -328,6 +356,23 @@ function ProjectCard({ p, kind }: { p: Project; kind: string }) {
           </dl>
         </div>
       </div>
+      {imgs.length > 0 && (
+        <dialog ref={dialog} className="viewer" aria-label={`${p.name} screenshots`} onClose={() => setShown(null)}
+          onClick={(e) => { if (e.target === e.currentTarget) setShown(null); }}
+          onKeyDown={(e) => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); }}>
+          {shown !== null && (
+            <figure>
+              <img src={imgs[shown].src} alt={imgs[shown].alt} />
+              <figcaption>{imgs[shown].alt} <span>{shown + 1} / {imgs.length}</span></figcaption>
+            </figure>
+          )}
+          <button className="viewer-close" onClick={() => setShown(null)} aria-label="Close"><X size={22} /></button>
+          {imgs.length > 1 && <>
+            <button className="viewer-nav prev" onClick={() => step(-1)} aria-label="Previous screenshot"><ChevronLeft size={26} /></button>
+            <button className="viewer-nav next" onClick={() => step(1)} aria-label="Next screenshot"><ChevronRight size={26} /></button>
+          </>}
+        </dialog>
+      )}
     </article>
   );
 }
