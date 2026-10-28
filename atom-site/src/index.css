@@ -358,10 +358,6 @@ h1, h2, h3 { margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
 .skill-card li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.55rem 0; }
 .skill-card li + li { border-top: 1px solid var(--line); }
 .skill-card .sk-name { font-size: 0.98rem; font-weight: 600; margin: 0; }
-.level { display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
-.meter { display: inline-flex; gap: 3px; }
-.meter i { width: 14px; height: 6px; border-radius: 3px; background: var(--line); }
-.meter i.f { background: var(--indigo); }
 .level-txt { font-size: 0.8rem; font-weight: 700; color: var(--indigo); }
 .xp > li { grid-template-columns: 3.2rem 1fr; }
 .xp-title { display: inline-flex; align-items: center; gap: 0.4rem; }

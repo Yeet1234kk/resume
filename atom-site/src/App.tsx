@@ -56,18 +56,6 @@ function More({ label, children, defaultOpen = false }: { label: string; childre
   );
 }
 
-const LEVELS: Record<string, number> = { Beginner: 1, Intermediate: 2, Advanced: 3 };
-function Level({ level }: { level?: string | null }) {
-  if (!level) return null;
-  const n = LEVELS[level];
-  return (
-    <span className="level">
-      {n && <span className="meter" aria-hidden="true">{[1, 2, 3].map((i) => <i key={i} className={i <= n ? 'f' : ''} />)}</span>}
-      <span className="level-txt">{level}</span>
-    </span>
-  );
-}
-
 function Diagram() {
   const src: [string, string, number][] = [
     ['Buzzebees POS', 'REST API', 20], ['LINE MAN', 'researching access', 215], ['Grab', 'researching access', 410],
@@ -258,7 +246,7 @@ function Resume() {
       </div>
 
       <div className="skills-gap" />
-      <SectionHead title="Skills inventory" sub="Levels are self-assessed: Beginner, Intermediate or Advanced" />
+      <SectionHead title="Skills inventory" />
       <h3 className="h3 reveal">Technical skills</h3>
       <div className="skill-groups">
         {tech.map((g, gi) => (
@@ -266,7 +254,7 @@ function Resume() {
             <p className={`skill-group ${TINTS[gi % 4]}`}>{g.group}</p>
             <ul>
               {g.items.map((s) => (
-                <li key={s.name}><span className="sk-name">{s.name}</span><Level level={s.level} /></li>
+                <li key={s.name}><span className="sk-name">{s.name}</span></li>
               ))}
             </ul>
           </div>

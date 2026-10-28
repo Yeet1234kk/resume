@@ -163,24 +163,24 @@ export const projects: Project[] = [
 export type Skill = { name: string; level?: string | null };
 export const skills: { group: string; items: Skill[] }[] = [
   { group: 'Web development', items: [
-    { name: 'HTML', level: 'Intermediate' }, { name: 'CSS', level: 'Intermediate' },
-    { name: 'Backend development', level: 'Intermediate' },
-    { name: 'Debugging and troubleshooting', level: 'Intermediate' },
+    { name: 'HTML' }, { name: 'CSS' },
+    { name: 'Backend development' },
+    { name: 'Debugging and troubleshooting' },
   ]},
   { group: 'Programming languages', items: [
-    { name: 'Python', level: 'Intermediate' }, { name: 'C', level: 'Intermediate' },
-    { name: 'Arduino and C++', level: 'Intermediate' }, { name: 'JavaScript', level: 'Intermediate' },
+    { name: 'Python' }, { name: 'C' },
+    { name: 'Arduino and C++' }, { name: 'JavaScript' },
   ]},
   { group: 'Database tools', items: [
-    { name: 'SQL', level: 'Intermediate' }, { name: 'MySQL', level: 'Intermediate' },
+    { name: 'SQL' }, { name: 'MySQL' },
   ]},
   { group: 'Design and prototyping', items: [
-    { name: 'Canva', level: 'Advanced' }, { name: 'Figma', level: 'Intermediate' },
-    { name: 'v0', level: 'Intermediate' }, { name: 'Wireframing', level: 'Intermediate' },
-    { name: 'Blender 3D', level: 'Intermediate' },
+    { name: 'Canva' }, { name: 'Figma' },
+    { name: 'v0' }, { name: 'Wireframing' },
+    { name: 'Blender 3D' },
   ]},
   { group: 'Tools and platforms', items: [
-    { name: 'Vercel', level: 'Advanced' }, { name: 'AI tools', level: 'Advanced' }, { name: 'REST APIs', level: 'Intermediate' },
+    { name: 'Vercel' }, { name: 'AI tools' }, { name: 'REST APIs' },
   ]},
   { group: 'Business analysis and marketing', items: [
     { name: 'Negotiation' }, { name: 'Money and stock management' }, { name: 'Market research' },
